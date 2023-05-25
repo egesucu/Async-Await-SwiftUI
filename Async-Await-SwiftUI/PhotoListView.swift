@@ -57,6 +57,7 @@ struct PhotoPreviewView: View {
                         .cornerRadius(20)
                         .padding(.all)
                         .shadow(radius: 8)
+                        .accessibilityLabel(Text(photo.alt ?? ""))
                     
                 } placeholder: {
                     ProgressView()
