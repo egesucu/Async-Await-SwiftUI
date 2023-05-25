@@ -21,7 +21,7 @@ class KeyReader {
         if let file = Bundle.main.path(forResource: "Secrets", ofType: "txt") {
             do {
                 accessKey = try String(contentsOfFile: file).replacingOccurrences(of: "\n", with: "")
-            } catch {
+            } catch let error {
                 print(error.localizedDescription)
             }
         }

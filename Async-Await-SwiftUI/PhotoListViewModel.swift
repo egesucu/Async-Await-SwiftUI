@@ -10,14 +10,12 @@ import SwiftUI
 
 class PhotoListViewModel: ObservableObject {
     @Published var photos: [Photo] = []
-    @Published var isSearching = false
     
     let networkManager = NetworkManager()
     
     @MainActor
     func searchPhotos(with searchTerm: String, emptyResulted: () -> ()) async {
         self.photos.removeAll()
-        isSearching = true
         let requestURL = networkManager.buildURL(searchTerm: searchTerm)
         if let requestURL {
             self.photos = await executeSearch(url: requestURL, forSearch: true)
@@ -25,12 +23,10 @@ class PhotoListViewModel: ObservableObject {
                 emptyResulted()
             }
         }
-        isSearching = false
     }
     
     @MainActor
     func listPhotos() async {
-        isSearching = true
         let requestURL = networkManager.buildURL()
         if let requestURL {
             self.photos = await executeSearch(url: requestURL)
