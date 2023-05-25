@@ -61,9 +61,6 @@ struct PhotoPreviewView: View {
                 } placeholder: {
                     ProgressView()
                 }
-                if let description = photo.description {
-                    Text(description)
-                }
                 
             }
         }
