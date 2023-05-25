@@ -31,6 +31,7 @@ struct SearchPhotoView: View {
                                 } label: {
                                     PhotoPreviewView(photo: photo)
                                 }
+                                .tint(Color(.label))
                             }
                             .padding(.all)
                         }
